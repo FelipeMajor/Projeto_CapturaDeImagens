@@ -25,9 +25,4 @@ solução detalhadamente.**
 video salvo, e apresentem uma velocidade de exibição adequada. Apresente o resultado e sua
 solução detalhadamente.**
 **$** para as imagens gravadas estarem normais, devemos alterar o codigo L__4_webcap.py para retirar a linha 21 que usa o comando cv.flip e adicionar o codigo de L__2_video.py para processar o video gravado, ajustando a velocidade de frames para a desejada, como abaixo:
-    # frame = cv.flip(frame, 0)
-    # write the flipped frame
-    out.write(frame)
-    cv.imshow('Imagem Normal', frame)
-    if cv.waitKey(1) == ord('q'):
-        break
+    fps =20.0
