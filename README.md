@@ -1,33 +1,90 @@
-# Projeto_CapturaDeImagens: PARTE 1
+# Projeto Captura de Imagens e Vídeos 📷
 
-> **Responda: por que a janela aberta não mostra a imagem colorida?** <br>
-**$** ao ler a imagem em img = cv.imread('messi5.jpg',0), a leitura considera 0 como a nova profundidade da imagem, tornando-a na escala grey; para ajustar basta editar a linha 4 de L__1_img.py como: <br>
-  img = cv.imread('messi5.jpg',0) <br>
+Este repositório reúne os códigos e documentações do **Laboratório 3 – Captura de Imagem e Vídeo** realizado em fevereiro de 2026 por um grupo de estudantes de computação. O objetivo principal é demonstrar o uso básico da biblioteca OpenCV para leitura, exibição, captura e gravação de imagens e vídeos, além de algumas adaptações em um notebook Jupyter para geração de avatares e montagem de quadros.
 
-> **Altere: modifique o programa para que as imagens sejam exibidas mais rápidamente e depois
-para que sejam exibidas mais lentamente. Responda: qual a explicação de alteração de
-velocidade de exibição, e apresente suas soluções detalhadamente** <br>
-**$** para alterar a velocidade de reprodução devemos ajustar a quantidade de frames por segundo da funcao time.sleep(segundo/frame). quanto maior o numero de frames, maior a velocidade de reprodução, basta editar a linha 15 de L__2_video.py como 80 frames por exemplo: <br>
-  time.sleep(1/80.0) <br>
+---
 
-> **Altere: modifique o programa para que uma imagem da câmera seja salva num arquivo
-“foto1.png” no momento em que for clicada a tecla ‘x’ no teclado. Apresente o resultado e sua
-solução detalhadamente.** <br>
-**$** para alcancar o objetivo, devemos ajusar a key para funcionar para o mesmo comando e criar uma condicional dentro do loop while True em L__3_webcam.py que reonheca x e use a funcao imwrite para salvar o frame como: <br>
-    cv.imshow('frame', frame) <br>
-    key = cv.waitKey(1) <br>
-    if key == ord('q'): <br>
-        break <br>
-    if key == ord('x'): <br>
-        cv.imwrite('foto.jpg',frame) <br>
+## 👥 Autores
 
-> **Altere: modifique o programa para que as imagens gravadas estejam “normais” no arquivo de
-video salvo, e apresentem uma velocidade de exibição adequada. Apresente o resultado e sua
-solução detalhadamente.** <br>
-**$** para as imagens gravadas estarem normais, devemos alterar o codigo L__4_webcap.py para retirar a linha 21 que usa o comando cv.flip e para processar o video gravado em uma velocidade normal, ajustamos a velocidade de frames para a desejada, como abaixo: <br>
-    fps =20.0 <br>
+- Fabricio da Costa Fernandes (RA: 11202321635)
+- Felipe de Lima Major (RA: 11202230321)
+- Lilian Gimenez Teixeira (RA: 11202332321)
 
 
-> **Responda: se for necessário alterar a imagem, ou seja realizando alguma operação de procesamento nela, em que
-ponto dos quatro programas estudados isso deve ser realizado?** <br>
-**$** O processamento da imagem deve vir apos a gravacao da mesma, pois com execcao de alguns ajustes como posicao de gravacao ou velocidade, o processamento de imagem como mornalizacao, filtragem de ruido, etc se dá de formas complexas que o programa de geração de imagem não deve se encarregar.
+## 🗂 Estrutura do projeto
+
+```
+main.ipynb              # Notebook com relatório e experimentos
+README.md               # Este arquivo de documentação
+static/                 # Pasta para imagens e vídeos gerados
+    fotos/              # Fotos capturadas pela webcam
+    videos/             # Vídeos gravados
+webcam-functions/       # Scripts auxiliares utilizados nos experimentos
+    (ALTERADO)L__1_img.py
+    (ALTERADO)L__2_video.py
+    (ALTERADO)L__3_webcam.py
+    (ALTERADO)L__4_webcap.py
+```
+
+Os arquivos dentro de `webcam-functions` são versões modificadas dos exercícios propostos no laboratório, com ajustes de velocidade, salvamento e correções de orientação.
+
+## 🧪 Conteúdo dos experimentos
+
+1. **Leitura de imagens**: carregamento de arquivos estáticos com diferentes flags para controlar cores e profundidade.
+2. **Reprodução de vídeo**: leitura de um arquivo `.mp4` e alteração da velocidade de exibição ajustando o intervalo entre frames.
+3. **Captura de webcam**: visualização em tempo real e salvamento de uma foto ao pressionar a tecla `x`.
+4. **Gravação de vídeo**: captura da câmera e escrita em arquivo `.avi` com codec XVID, ajustando FPS e removendo flips indesejados.
+5. **Adaptação para notebook**: os códigos foram incorporados em `main.ipynb`, que também inclui geração de uma foto de equipe, montagem de avatares e vídeos com diferentes velocidades.
+
+O notebook contém explicações, respostas às questões propostas pelo laboratório e as conclusões dos experimentos.
+
+## 🚀 Começando
+
+Para reproduzir os experimentos em sua máquina:
+
+1. **Pré-requisitos**:
+   - Python 3.8+ ou similar
+   - Bibliotecas: `opencv-python`, `numpy`, `scikit-image` (para a parte 2)
+   - ambiente Jupyter (opcional, para abrir `main.ipynb`)
+   - Câmera USB ou integrada para captura ao vivo.
+
+2. **Instalação das dependências** (exemplo usando `pip`):
+
+   ```bash
+   pip install opencv-python numpy scikit-image jupyter
+   ```
+
+3. **Executar os scripts**:
+   - Abra o notebook `main.ipynb` e execute as células conforme desejado.
+   - Para rodar individualmente, execute os arquivos dentro de `webcam-functions` com Python:
+     ```bash
+     python "webcam-functions/(ALTERADO)L__1_img.py"
+     python "webcam-functions/(ALTERADO)L__2_video.py"
+     python "webcam-functions/(ALTERADO)L__3_webcam.py"
+     python "webcam-functions/(ALTERADO)L__4_webcap.py"
+     ```
+
+   As janelas de vídeo podem ser fechadas pressionando `q` ou as teclas indicadas nos comentários dos códigos.
+
+4. **Resultados**:
+   - As imagens e vídeos gerados são salvos em `static/fotos` e `static/videos` respectivamente.
+   - O notebook inclui exemplos adicionais de processamento e montagem de avatares.
+
+
+## 📄 Conclusão
+
+O projeto serve como relatório prático das atividades do laboratório, demonstrando os procedimentos básicos de captura e manipulação de mídias com OpenCV. Ele estabelece uma base para futuros experimentos de processamento de imagem e vídeo.
+
+> Para detalhes metodológicos e explicações das modificações, consulte o próprio `main.ipynb`.
+
+---
+
+## 📚 Referências
+
+- Biblioteca OpenCV: https://opencv.org/
+- Documentação do Jupyter Notebook: https://jupyter.org/
+
+
+---
+
+*Última atualização: 27 de fevereiro de 2026*
